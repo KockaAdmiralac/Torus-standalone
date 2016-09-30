@@ -1,0 +1,22 @@
+{
+	"event": "",
+
+	"message_text": "",
+	"message_html": "",
+	"message_ping": false,
+	"message_time": 0,
+
+	"user_name": "",
+	"user_mod": false,
+	"user_givemod": false,
+	"user_staff": false,
+	"user_edits": 0,
+	"user_avatar": "",
+	"user_status": "here",
+	"user_status_message": "",
+
+	"room_name": "",
+	"room_domain": "",
+	"room_size": 0,
+	"room_id": 0
+}

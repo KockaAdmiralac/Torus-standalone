@@ -1,0 +1,31 @@
+{
+	"messages": {
+		"general": {
+			"maxmessages": "number",
+			"showrejoins": "boolean",
+			"timezone": "number"
+		},
+		"emotes": {
+			"showemotes": "boolean",
+			"maxemotes": "number",
+			"enabled": "showemotes"
+		}
+	},
+	"misc": {
+		"connection": {
+			"defaultrooms": "array"
+		},
+		"user_colors": {
+			"showcolors": "boolean",
+			"colorhue": "number",
+			"colorsat": "number",
+			"colorval": "number",
+			"enabled": "showcolors"
+		},
+		"links": {
+			"joinchatlinks": "boolean",
+			"linktarget": "string",
+			"enabled": "joinchatlinks"
+		}
+	}
+}

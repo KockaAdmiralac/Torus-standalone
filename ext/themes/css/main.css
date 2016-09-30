@@ -1,0 +1,27 @@
+/**
+ * main.css
+ *
+ * Main stylizations for themes extension
+ */
+#torus-themes-table {
+	border-spacing: 0;
+	text-align: center;
+}
+#torus-themes-table > tr > td {
+	padding: 1em 0;
+	border-bottom: 1px solid;
+}
+#torus-themes-table > tr:last-child > td {border-bottom: 0;}
+#torus-themes-table > tr > td:first-child {width: 30%;}
+#torus-themes-table > tr > td:last-child {width: 70%;}
+#torus-themes-table label.torus-theme-label {font-size: 150%;}
+#torus-themes-table table.torus-theme-preview {border-spacing: 0;}
+#torus-themes-table table.torus-theme-preview td {
+	border: 1px solid;
+	border-left: 0;
+	min-width: 12em;
+}
+#torus-themes-table table.torus-theme-preview td:first-child {
+	border-left-width: 1px;
+	border-left-style: solid;
+}

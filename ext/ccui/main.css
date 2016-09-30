@@ -1,0 +1,37 @@
+#torus-ext-ccui-link {
+	float: right;
+}
+#torus-ext-ccui-limit {
+	width: 5em;
+}
+#torus-window li.torus-ext-ccui-li-odd {
+	background-color: #def;
+}
+#torus-window div.torus-ext-ccui-group {
+	border: 1px solid;
+	border-bottom: 0;
+}
+#torus-window div.torus-ext-ccui-group:last-child {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+#torus-window div.torus-ext-ccui-title {
+	border-bottom: 1px solid;
+	text-align: center;
+}
+#torus-window div.torus-ext-ccui-table {
+	height: 150px;
+	overflow-y: scroll;
+}
+#torus-window div.torus-ext-ccui-table ul {
+	display: inline-block;
+	width: 33%;
+	min-height: 150px;
+	margin: 0;
+	list-style: none;
+	text-align: center;
+	border-left: 1px solid;
+}
+#torus-window div.torus-ext-ccui-table ul:first-child {
+	border-left: 0;
+}

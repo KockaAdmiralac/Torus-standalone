@@ -1,0 +1,136 @@
+/**
+ * creampuff.css
+ *
+ * Contains CSS related to the Creampuff theme.
+ */
+#torus-preview-creampuff .bg1, .theme-creampuff .bg1 {background-color: #f66;}
+#torus-preview-creampuff .bg2, .theme-creampuff .bg2 {background-color: #f99;}
+#torus-preview-creampuff .bg3, .theme-creampuff .bg3 {background-color: #fcc;}
+#torus-preview-creampuff .bg4, .theme-creampuff .bg4 {background-color: #fed;}
+#torus-preview-creampuff .bg5, .theme-creampuff .bg5 {background-color: #fff;}
+#torus-preview-creampuff .border1, .theme-creampuff .border1 {border-color: #000;}
+#torus-preview-creampuff .border2, .theme-creampuff .border2 {border-color: #999;}
+#torus-preview-creampuff .border3, .theme-creampuff .border3 {border-color: #ccc;}
+#torus-preview-creampuff .text1, .theme-creampuff .text1 {color: #000;}
+#torus-preview-creampuff .text2, .theme-creampuff .text2 {color: #909;}
+#torus-preview-creampuff .text3, .theme-creampuff .text3 {color: #666;}
+#torus-preview-creampuff .text4, .theme-creampuff .text4 {color: #f00;}
+
+.theme-creampuff {
+	color: #000;
+	border: 1px solid #000;
+}
+.theme-creampuff a {color: #909;}
+.theme-creampuff a:visited {color: #990;}
+
+.theme-creampuff #torus-tabs {
+	background-color: #f66;
+}
+.theme-creampuff #torus-tabs span.torus-tab {
+	background-color: #f99;
+	border: 1px solid #ccc;
+}
+.theme-creampuff #torus-tabs span.torus-tab-viewing,
+.theme-creampuff #torus-tabs span.torus-tab:hover {
+	background-color: #fed;
+}
+.theme-creampuff #torus-tabs span.torus-tab-active,
+.theme-creampuff #torus-tabs span.torus-tab-active:hover {
+	background-color: #fff;
+}
+.theme-creampuff #torus-tabs span.torus-tab-alert {color: #909;}
+.theme-creampuff #torus-tabs span.torus-tab-message {color: #ff0;}
+.theme-creampuff #torus-tabs span.torus-tab-ping {color: #f00;}
+.theme-creampuff #torus-tabs span.torus-tab-close {color: #000;}
+.theme-creampuff #torus-tabs span.torus-tab-close:hover {color: #f00;}
+
+.theme-creampuff #torus-info {
+	background-color: #edd;
+	border-top: 1px solid #000;
+	border-right: 1px solid #000;
+}
+
+.theme-creampuff #torus-window {
+	background-color: #fcc;
+	border-top: 1px solid #000;
+	border-right: 1px solid #000;
+}
+.theme-creampuff #torus-window div.torus-message-inactive {color: #666;}
+.theme-creampuff #torus-window div.torus-message-ping {color: #f00;}
+
+.theme-creampuff #torus-sidebar {
+	background-color: #f66;
+	border-top: 1px solid #000;
+}
+.theme-creampuff #torus-sidebar span.torus-user-away {color: #666;}
+.theme-creampuff #torus-sidebar li.torus-sidebar-button {background-color: #f99;}
+.theme-creampuff #torus-sidebar li.torus-sidebar-button:hover {background-color: #fed;}
+.theme-creampuff #torus-sidebar li.torus-sidebar-button-selected,
+.theme-creampuff #torus-sidebar li.torus-sidebar-button-selected:hover {background-color: #fff;}
+
+.theme-creampuff #torus-popup {
+	background-color: #f66;
+	border: 1px solid #000;
+}
+.theme-creampuff #torus-popup-avatar {
+	border: 1px solid #ccc;
+}
+.theme-creampuff #torus-popup-name,
+.theme-creampuff #torus-popup-name a {
+	color: #000;
+}
+.theme-creampuff #torus-popup a.torus-popup-userlink,
+.theme-creampuff #torus-popup a.torus-popup-action,
+.theme-creampuff #torus-popup a.torus-popup-action-disabled {
+	border-top-color: #ccc;
+	border-bottom-color: #ccc;
+	background-color: #f99;
+}
+.theme-creampuff #torus-popup a.torus-popup-userlink:hover,
+.theme-creampuff #torus-popup a.torus-popup-action:hover {
+	background-color: #fed;
+}
+.theme-creampuff #torus-popup a.torus-popup-userlink-disabled,
+.theme-creampuff #torus-popup a.torus-popup-userlink-disabled:hover,
+.theme-creampuff #torus-popup a.torus-popup-action-disabled,
+.theme-creampuff #torus-popup a.torus-popup-action-disabled:hover {
+	background-color: #ddd;
+	color: #999;
+}
+.theme-creampuff #torus-popup-modconfirm,
+.theme-creampuff #torus-popup-banmodal {
+	background-color: #f66;
+	border: 1px solid #000;
+	border-right: 1px solid #999;
+	color: #000;
+}
+
+.theme-creampuff #torus-input {
+	background-color: #f66;
+	border-top-color: #000;
+}
+.theme-creampuff #torus-input-box {
+	background-color: #fff;
+	color: #000;
+}
+
+.theme-creampuff #torus-menu-extensions a {
+	background-color: #f99;
+}
+.theme-creampuff #torus-menu-extensions a:hover {
+	background-color: #fed;
+}
+.theme-creampuff #torus-window fieldset {border-color: #909;}
+.theme-creampuff #torus-window textarea,
+.theme-creampuff #torus-window input[type="text"],
+.theme-creampuff #torus-window input[type="number"] {
+	background-color: #fff;
+	color: #000;
+}
+.theme-creampuff #torus-window div.torus-option-array {border-color: #f66;}
+.theme-creampuff #torus-window div.torus-option-array ul {background-color: #fed;}
+.theme-creampuff #torus-window div.torus-option-array li {border-bottom-color: #000;}
+.theme-creampuff #torus-window div.torus-option-array li:nth-child(even) {background-color: #fff;}
+.theme-creampuff #torus-window div.torus-option-array li:nth-child(odd) {background-color: #f99;}
+.theme-creampuff #torus-window div.torus-option-array span.torus-option-array-remove {color: red;}
+.theme-creampuff #torus-window div.torus-option-array input {border-top-color: #f66;}

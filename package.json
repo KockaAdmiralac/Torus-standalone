@@ -1,0 +1,28 @@
+{
+    "name": "Torus-standalone",
+    "version": "0.0.1",
+    "description": "A standalone version of (Torus)[https://github.com/Monchoman45/Torus]",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/KockaAdmiralac/Torus-standalone.git"
+    },
+    "keywords": [
+        "Torus",
+        "standalone",
+        "Wikia",
+        "chat"
+    ],
+    "author": "KockaAdmiralac",
+    "license": "CC-BY-SA",
+    "bugs": {
+        "url": "https://github.com/KockaAdmiralac/Torus-standalone/issues"
+    },
+    "homepage": "https://github.com/KockaAdmiralac/Torus-standalone",
+    "devDependencies": {
+        "electron-prebuilt": "^1.2.0"
+    }
+}

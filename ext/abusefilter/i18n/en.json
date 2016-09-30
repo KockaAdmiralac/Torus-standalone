@@ -1,0 +1,86 @@
+{
+	"abusefilter-name": "Abusefilter",
+
+	"abusefilter-text": "Filter text",
+	"abusefilter-actions": "Filter actions",
+
+	"abusefilter-sidebar-filter": "Filter",
+	"abusefilter-sidebar-examine": "Examine",
+	"abusefilter-sidebar-help": "Help",
+
+	"abusefilter-label-enabled": "Enabled",
+	"abusefilter-label-ping": "Ping me",
+	"abusefilter-label-warn": "Send message",
+	"abusefilter-label-warn-message": "Message: ",
+	"abusefilter-label-kick": "Kick",
+	"abusefilter-label-ban": "Ban",
+	"abusefilter-label-ban-expiry": "Expiry: ",
+	"abusefilter-label-ban-summary": "Summary: ",
+	"abusefilter-label-block": "Block",
+	"abusefilter-label-block-expiry": "Expiry: ",
+	"abusefilter-label-block-reason": "Summary: ",
+	"abusefilter-label-block-autoblock": "Autoblock",
+	"abusefilter-label-block-noemail": "Prevent email",
+	"abusefilter-label-block-allowusertalk": "Allow user to edit their own talk page",
+	"abusefilter-label-block-nocreate": "Prevent account creation",
+
+	"abusefilter-label-examine": "Examine actions by user: ",
+
+	"abusefilter-table-variables": "Variables",
+	"abusefilter-table-functions": "Functions",
+	"abusefilter-table-name": "Name",
+	"abusefilter-table-type": "Type",
+	"abusefilter-table-description": "Description",
+
+	"abusefilter-help-event": "Event name. Can be \"join\", \"message\", or \"me\".",
+
+	"abusefilter-help-message_text": "Unparsed message text. Empty for join events.",
+	"abusefilter-help-message_html": "Parsed HTML of message text. Empty for join events.",
+	"abusefilter-help-message_ping": "Whether or not the message pinged you. This is based on your normal pings, not the ping on filter match function.",
+	"abusefilter-help-message_time": "Unix timestamp.",
+
+	"abusefilter-help-user_name": "Name of user who sent the message.",
+	"abusefilter-help-user_mod": "Whether the user is a mod.",
+	"abusefilter-help-user_givemod": "Whether the user is an admin (or helper).",
+	"abusefilter-help-user_staff": "Whether the user is staff.",
+	"abusefilter-help-user_edits": "Number of edits.",
+	"abusefilter-help-user_avatar": "URL of user's avatar.",
+	"abusefilter-help-user_status": "User's status state. Commonly either \"here\" or \"away\".",
+	"abusefilter-help-user_status_message": "User's status message. Generally only people who use Torus can change this.",
+
+	"abusefilter-help-room_name": "Room's display name. This is usually more useful for PMs.",
+	"abusefilter-help-room_domain": "Wiki domain (eg. community for community.wikia.com)",
+	"abusefilter-help-room_size": "Number of users in the room.",
+	"abusefilter-help-room_id": "Room ID.",
+
+	"abusefilter-help-lcase": "Returns the argument converted to lower case.",
+	"abusefilter-help-ucase": "Returns the argument converted to upper case.",
+	"abusefilter-help-length": "Returns the length of the string given as the argument.",
+	"abusefilter-help-strlen": "Same as length.",
+	"abusefilter-help-substr": "Returns the portion of the first string, by offset from the second argument (starts at 0) and maximum length from the third argument (optional).",
+	"abusefilter-help-strpos": "Returns the numeric position of the first occurrence of needle (second string) in the haystack (first string). This function may return 0 when the needle is found at the begining of the haystack, so it might be misinterpreted as false value by another comparative operator. The better way is to use === or !== for testing whether it is found.",
+	"abusefilter-help-str_replace": "Replaces all occurrences of the search string with the replacement string. The function takes 3 arguments in the following order: text to perform the search, text to find, replacement text.",
+
+	"abusefilter-help-norm": "Equivalent to rmwhitespace(rmspecials(rmdoubles(ccnorm(arg1)))).",
+	"abusefilter-help-ccnorm": "Normalises confusable/similar characters in the argument, and returns a canonical form. A list of characters and their replacements can be found on git, eg. ccnorm( \"Eeèéëēĕėęě3ƐƷ\" ) === \"EEEEEEEEEEEEE\".",
+	"abusefilter-help-specialratio": "Returns the number of non-alphanumeric characters divided by the total number of characters in the argument.",
+	"abusefilter-help-rmspecials": "Removes any special characters in the argument, and returns the result. (Equivalent to s/[^\\p{L}\\p{N}]//g.)",
+	"abusefilter-help-rmdoubles": "Removes repeated characters in the argument, and returns the result.",
+	"abusefilter-help-rmwhitespace": "Removes whitespace (spaces, tabs, newlines).",
+
+	"abusefilter-help-count": "Returns the number of times the needle (first string) appears in the haystack (second string).",
+	"abusefilter-help-rcount": "Similar to count but the needle uses a regular expression instead. Can be made case-insensitive by letting the regular expression start with \"(?i)\".",
+
+	"abusefilter-help-contains_any": "Returns true if the first string contains any strings from the following arguments (unlimited number of arguments).",
+	"abusefilter-help-rescape": "Returns the argument with some characters preceded with the escape character \"\", so that the string can be used in a regular expression without those characters having a special meaning.",
+	"abusefilter-help-set": "Sets a variable (first string) with a given value (second argument) for further use in the filter. Another syntax: name := value.",
+	"abusefilter-help-set_var": "Same as set.",
+
+	"abusefilter-help-string": "Casts to string data type.",
+	"abusefilter-help-int": "Casts to integer data type.",
+	"abusefilter-help-bool": "Casts to boolean data type.",
+
+	"abusefilter-help-url_encode": "URL encodes the input string (encodeURIComponent).",
+	"abusefilter-help-strip_unicode": "Strips unicode characters from the input, eg. \"T҉̴͞͏\" -> \"T\".",
+	"abusefilter-help-vowel_ratio": "Returns number of vowels / number of consonants (does not count numbers or special characters). English averages around .61."
+}

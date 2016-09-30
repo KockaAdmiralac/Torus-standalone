@@ -1,0 +1,9 @@
+{
+    "i18n": true,
+    "nomenu": true,
+    "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+    }
+}

@@ -1,0 +1,29 @@
+{
+	"enabled": {
+		"enabled": false
+	},
+	"ping": {
+		"enabled": false
+	},
+	"warn": {
+		"enabled": false,
+		"message": "",
+	},
+	"kick": {
+		"enabled": false
+	},
+	"ban": {
+		"enabled": false,
+		"expiry": "infinite",
+		"summary": "",
+	},
+	"block": {
+		"enabled": false,
+		"expiry": "infinite",
+		"reason": "",
+		"autoblock": true,
+		"noemail": true,
+		"allowusertalk": false,
+		"nocreate": true,
+	}
+}

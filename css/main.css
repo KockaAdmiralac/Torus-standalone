@@ -1,0 +1,288 @@
+/**
+ * main.css
+ *
+ * This file contains main stylizations for Torus
+ * It is NOT RECOMMENDED to change contents of this file
+ *
+ * If you want to edit your user themes, see template.css
+ * and themes folder
+ */
+#torus {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: 0;
+	font-size: 11px;
+	line-height: 1.5em;
+}
+
+#torus-tabs {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 3em;
+}
+#torus-tabs span.torus-tab {
+	position: relative;
+	top: .4em;
+	margin: 0 .3em;
+	padding: .1em .3em;
+	border-radius: .4em;
+	font-size: 1.5em;
+	cursor: pointer;
+	white-space: nowrap;
+}
+#torus-tabs span.torus-tab-active,
+#torus-tabs span.torus-tab-active:hover {
+	font-weight: bold;
+}
+#torus-tabs span.torus-tab-close {
+	font-size: .65em;
+	margin-left: .6em;
+	vertical-align: top;
+	line-height: .8em;
+	font-weight: bold;
+}
+#torus-tabs #torus-tab--1 { /*#id #id is dumb but without this #torus-tabs span.torus-tab overrides this*/
+	position: absolute;
+	top: .2em;
+	right: 0;
+}
+#torus-tab--1 img {vertical-align: top;}
+
+#torus-info {
+	position: absolute;
+	top: 3em;
+	left: 0;
+	right: 15em;
+	height: 2em;
+	line-height: 2em;
+	text-align: center;
+}
+
+#torus-window {
+	position: absolute;
+	top: 5em;
+	bottom: 4em;
+	left: 0;
+	right: 15em;
+	margin: 0;
+	padding: .3em .5em;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	list-style: none;
+	font-family: monospace;
+	word-wrap: break-word;
+}
+#torus-window span.torus-whitespace {white-space: pre;}
+#torus-window img.torus-message-emote {height: 1.455em;} /* FIXME: overly specific */
+
+#torus-sidebar {
+	position: absolute;
+	top: 3em;
+	bottom: 4em;
+	right: 0;
+	width: 15em;
+	margin: 0;
+	padding: .2em 0;
+	list-style: none;
+	white-space: nowrap;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+#torus-sidebar li {
+	line-height: 1.5em;
+	margin: 0;
+}
+#torus-sidebar li.torus-user {padding-left: 1.5em;}
+#torus-sidebar span.torus-user-away {
+	font-style: italic;
+}
+#torus-sidebar li.torus-user-mod,
+#torus-sidebar li.torus-user-staff {
+	padding-left: .5em;
+}
+#torus-sidebar img.torus-user-icon-staff,
+#torus-sidebar img.torus-user-icon-mod {
+	height: 1em;
+	margin-top: .1em;
+	vertical-align: baseline;
+}
+#torus-sidebar img.torus-user-icon-staff {margin-top: .2em;}
+#torus-sidebar li.torus-sidebar-button {
+	padding: .1em .5em;
+	cursor: pointer;
+	font-size: larger;
+}
+
+#torus-popup {
+	display: none;
+	min-width: 15em;
+	position: absolute;
+	right: 15em;
+	z-index: 10;
+	white-space: nowrap;
+}
+#torus-popup-avatar {
+	position: absolute;
+	width: 3.5em;
+	margin: .5em;
+	margin-left: .7em;
+}
+#torus-popup-info {
+	height: 4.5em;
+	margin-top: .5em;
+	margin-left: 5em;
+	padding-right: .5em;
+}
+#torus-popup-name,
+#torus-popup-name a {
+	font-size: larger;
+	font-weight: bold;
+}
+#torus-popup-access {
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #0f0;
+}
+#torus-popup-status-state {font-size: larger;}
+#torus-popup-status-message {
+	line-height: 1em;
+	font-style: italic;
+}
+#torus-popup a.torus-popup-userlink,
+#torus-popup a.torus-popup-action,
+#torus-popup a.torus-popup-action-disabled {
+	display: block;
+	width: 100%;
+	padding: .5em 0;
+	text-align: center;
+	text-decoration: none;
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+}
+#torus-popup a.torus-popup-userlink {
+	display: inline-block;
+	width: 50%;
+}
+#torus-popup-userlinks div:last-child a.torus-popup-userlink {border-top: 0;}
+#torus-popup a.torus-popup-action,
+#torus-popup a.torus-popup-action-disabled {
+	margin-top: .5em;
+}
+#torus-popup a.torus-popup-action:last-child,
+#torus-popup a.torus-popup-action-disabled:last-child {
+	border: 0;
+	margin: 0;
+}
+#torus-popup a.torus-popup-userlink:hover,
+#torus-popup a.torus-popup-action:hover {
+	cursor: pointer;
+}
+#torus-popup a.torus-popup-userlink-disabled,
+#torus-popup a.torus-popup-userlink-disabled:hover,
+#torus-popup a.torus-popup-action-disabled,
+#torus-popup a.torus-popup-action-disabled:hover {
+	cursor: default;
+}
+#torus-popup-modconfirm,
+#torus-popup-banmodal {
+	display: none;
+	position: absolute;
+	right: 100%;
+	padding: .5em;
+	bottom: -1px;
+	cursor: default;
+}
+#torus-popup-modconfirm {
+	bottom: auto;
+	margin-top: -.5em;
+	padding: .5em;
+}
+#torus-popup-banbutton {cursor: pointer;}
+#torus-popup a.torus-popup-action:hover #torus-popup-banmodal {display: block;}
+
+#torus-input {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 3.2em;
+	padding: .4em .3em;
+}
+#torus-input-box {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	resize: none;
+}
+
+#torus-menu-name {
+	margin-top: 1em;
+	margin-bottom: .5em;
+	font-size: 4em;
+	text-align: center;
+}
+#torus-menu-links {
+	margin-bottom: 2em;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+#torus-menu-extensions a {
+	display: block;
+	padding: .5em 0;
+	margin-bottom: 5px;
+	cursor: pointer;
+	font-size: 2em;
+	text-align: center;
+	text-decoration: none;
+}
+
+#torus-window fieldset legend {font-size: 1.5em;}
+#torus-window textarea,
+#torus-input-box {
+	resize: vertical;
+	width: 100%;
+	display: block;
+}
+#torus-input-box.password {-webkit-text-security: disc;}
+#torus-window input[type="checkbox"] {
+	vertical-align: bottom;
+	margin: 0;
+}
+#torus-window div.torus-option-array {border: 1px solid;}
+#torus-window div.torus-option-array ul {
+	height: 10em;
+	list-style: none;
+	margin: 0;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+#torus-window div.torus-option-array li {
+	padding: .25em .5em;
+	font-size: larger;
+	border-bottom: 1px solid;
+	margin: 0;
+}
+#torus-window div.torus-option-array span.torus-option-array-remove {
+	float: right;
+	cursor: pointer;
+}
+#torus-window div.torus-option-array input {
+	width: 100%;
+	border: 0;
+	border-top: 1px solid;
+}
+
+#torus a.torus-fakelink {cursor: pointer;}
+#torus .torus-hide {display: none;}
+#torus h2 {color: inherit;}
+#torus table.wikitable {width: 100%;}

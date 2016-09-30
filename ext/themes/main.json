@@ -1,0 +1,9 @@
+{
+    "i18n": true,
+    "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+    },
+    "css": ["main", "binary", "creampuff", "default", "plain"]
+}

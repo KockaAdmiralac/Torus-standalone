@@ -1,0 +1,150 @@
+/*
+ * template.css
+ *
+ * This file represents a template for all other themes
+ *
+ * Use your favorite find/replace tool to fill in colors. See
+ * comments on the following block for which colors go to what.
+ * Miscellaneous colors are marked with $other. Find these, read the
+ * comment on it to figure out what it goes to, and then put whatever
+ * you want there. Don't try to just replace all of them; it'll look
+ * weird. Feel free to manually tweak stuff, you don't have to follow
+ * all the suggestions here.
+ *
+ * If you want to go beyond a recolor and do more interesting things,
+ * feel free, but make sure you prefix all of your selectors with
+ * `.theme-$name`, and keep the large brick after this comment
+ * (it sets colors for your preview on the theme selector and also
+ * the colors that extensions will use). You can do as much or as
+ * little as you want as long as it looks good.
+ *
+ * Replace $name with a UNIQUE IDENTIFIER for torus to use for your
+ * theme. Please use all lowercase letters; if you want spaces, use
+ * underscores.
+ */
+
+#torus-preview-$name .bg1, .theme-$name .bg1 {background-color: $bg1;} /* dark UI backgrounds (sidebar, tabs, input) */
+#torus-preview-$name .bg2, .theme-$name .bg2 {background-color: $bg2;} /* most buttons (tabs, menu buttons, sidebar buttons) */
+#torus-preview-$name .bg3, .theme-$name .bg3 {background-color: $bg3;} /* chat window */
+#torus-preview-$name .bg4, .theme-$name .bg4 {background-color: $bg4;} /* button hover */
+#torus-preview-$name .bg5, .theme-$name .bg5 {background-color: $bg5;} /* button selected */
+#torus-preview-$name .border1, .theme-$name .border1 {border-color: $border1;} /* UI borders */
+#torus-preview-$name .border2, .theme-$name .border2 {border-color: $border2;} /* minor details */
+#torus-preview-$name .border3, .theme-$name .border3 {border-color: $border3;} /* button borders */
+#torus-preview-$name .text1, .theme-$name .text1 {color: $text1;} /* most text */
+#torus-preview-$name .text2, .theme-$name .text2 {color: $text2;} /* links */
+#torus-preview-$name .text3, .theme-$name .text3 {color: $text3;} /* greyed out */
+#torus-preview-$name .text4, .theme-$name .text4 {color: $text4;} /* pings */
+
+.theme-$name {
+	color: $text1;
+	border: 1px solid $border1;
+}
+.theme-$name a {color: $text2;}
+.theme-$name a:visited {color: $other;} /* visited link */
+
+.theme-$name #torus-tabs {
+	background-color: $bg1;
+}
+.theme-$name #torus-tabs span.torus-tab {
+	background-color: $bg2;
+	border: 1px solid $border3;
+}
+.theme-$name #torus-tabs span.torus-tab-viewing,
+.theme-$name #torus-tabs span.torus-tab:hover {
+	background-color: $bg4;
+}
+.theme-$name #torus-tabs span.torus-tab-active,
+.theme-$name #torus-tabs span.torus-tab-active:hover {
+	background-color: $bg5;
+}
+.theme-$name #torus-tabs span.torus-tab-alert {color: $other;} /* color for tabs with new joins/parts/kicks/etc */
+.theme-$name #torus-tabs span.torus-tab-message {color: $other;} /* color for tabs with new messages */
+.theme-$name #torus-tabs span.torus-tab-ping {color: $text4;}
+.theme-$name #torus-tabs span.torus-tab-close {color: $text1;}
+.theme-$name #torus-tabs span.torus-tab-close:hover {color: $text4;}
+
+.theme-$name #torus-info {
+	background-color: $other; /* bg for the info bar */
+	border-top: 1px solid $border1;
+	border-right: 1px solid $border1;
+}
+
+.theme-$name #torus-window {
+	background-color: $bg3;
+	border-top: 1px solid $border1;
+	border-right: 1px solid $border1;
+}
+.theme-$name #torus-window div.torus-message-inactive {color: $text3;}
+.theme-$name #torus-window div.torus-message-ping {color: $text4;}
+
+.theme-$name #torus-sidebar {
+	background-color: $bg1;
+	border-top: 1px solid $border1;
+}
+.theme-$name #torus-sidebar span.torus-user-away {color: $text3;}
+.theme-$name #torus-sidebar li.torus-sidebar-button {background-color: $bg2;}
+.theme-$name #torus-sidebar li.torus-sidebar-button:hover {background-color: $bg4;}
+.theme-$name #torus-sidebar li.torus-sidebar-button-selected,
+.theme-$name #torus-sidebar li.torus-sidebar-button-selected:hover {background-color: $bg5;}
+
+.theme-$name #torus-popup {
+	background-color: $bg1;
+	border: 1px solid $border1;
+}
+.theme-$name #torus-popup-avatar {
+	border: 1px solid $border3;
+}
+.theme-$name #torus-popup-name,
+.theme-$name #torus-popup-name a {
+	color: $text1;
+}
+.theme-$name #torus-popup a.torus-popup-userlink,
+.theme-$name #torus-popup a.torus-popup-action,
+.theme-$name #torus-popup a.torus-popup-action-disabled {
+	border-top-color: $border3;
+	border-bottom-color: $border3;
+	background-color: $bg2;
+}
+.theme-$name #torus-popup a.torus-popup-userlink:hover,
+.theme-$name #torus-popup a.torus-popup-action:hover {
+	background-color: $bg4;
+}
+.theme-$name #torus-popup a.torus-popup-userlink-disabled,
+.theme-$name #torus-popup a.torus-popup-userlink-disabled:hover,
+.theme-$name #torus-popup a.torus-popup-action-disabled,
+.theme-$name #torus-popup a.torus-popup-action-disabled:hover {
+	background-color: #ddd;
+	color: #999;
+}
+.theme-$name #torus-popup-modconfirm,
+.theme-$name #torus-popup-banmodal {
+	background-color: $bg1;
+	border: 1px solid $border1;
+	border-right: 1px solid $border2;
+	color: $text1;
+}
+
+.theme-$name #torus-input {
+	background-color: $bg1;
+	border-top: 1px solid $border1;
+}
+.theme-$name #torus-input-box {
+	background-color: $bg5;
+	color: $text1;
+}
+
+.theme-$name #torus-menu-extensions a {
+	background-color: $bg2;
+}
+.theme-$name #torus-menu-extensions a:hover {
+	background-color: $bg4;
+}
+
+.theme-$name #torus-window fieldset {border: 1px solid $text2;}
+.theme-$name #torus-window textarea,
+.theme-$name #torus-window input[type="text"],
+.theme-$name #torus-window input[type="number"] {
+	background-color: $bg5;
+	color: $text1;
+}

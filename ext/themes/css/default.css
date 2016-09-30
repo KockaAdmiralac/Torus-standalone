@@ -1,0 +1,137 @@
+
+/**
+ * default.css
+ *
+ * Contains CSS related to the Default theme.
+ */
+#torus-preview-default .bg1, .theme-default .bg1 {background-color: #66f;}
+#torus-preview-default .bg2, .theme-default .bg2 {background-color: #99f;}
+#torus-preview-default .bg3, .theme-default .bg3 {background-color: #ccf;}
+#torus-preview-default .bg4, .theme-default .bg4 {background-color: #def;}
+#torus-preview-default .bg5, .theme-default .bg5 {background-color: #fff;}
+#torus-preview-default .border1, .theme-default .border1 {border-color: #000;}
+#torus-preview-default .border2, .theme-default .border2 {border-color: #999;}
+#torus-preview-default .border3, .theme-default .border3 {border-color: #ccc;}
+#torus-preview-default .text1, .theme-default .text1 {color: #000;}
+#torus-preview-default .text2, .theme-default .text2 {color: #03c;}
+#torus-preview-default .text3, .theme-default .text3 {color: #666;}
+#torus-preview-default .text4, .theme-default .text4 {color: #f00;}
+
+.theme-default {
+	color: #000;
+	border: 1px solid #000;
+}
+.theme-default a {color: #03c;}
+.theme-default a:visited {color: #909;}
+
+.theme-default #torus-tabs {
+	background-color: #66f;
+}
+.theme-default #torus-tabs span.torus-tab {
+	background-color: #99f;
+	border: 1px solid #ccc;
+}
+.theme-default #torus-tabs span.torus-tab-viewing,
+.theme-default #torus-tabs span.torus-tab:hover {
+	background-color: #def;
+}
+.theme-default #torus-tabs span.torus-tab-active,
+.theme-default #torus-tabs span.torus-tab-active:hover {
+	background-color: #fff;
+}
+.theme-default #torus-tabs span.torus-tab-alert {color: #909;}
+.theme-default #torus-tabs span.torus-tab-message {color: #ff0;}
+.theme-default #torus-tabs span.torus-tab-ping {color: #f00;}
+.theme-default #torus-tabs span.torus-tab-close {color: #000;}
+.theme-default #torus-tabs span.torus-tab-close:hover {color: #f00;}
+
+.theme-default #torus-info {
+	background-color: #dde;
+	border-top: 1px solid #000;
+	border-right: 1px solid #000;
+}
+
+.theme-default #torus-window {
+	background-color: #ccf;
+	border-top: 1px solid #000;
+	border-right: 1px solid #000;
+}
+.theme-default #torus-window div.torus-message-inactive {color: #666;}
+.theme-default #torus-window div.torus-message-ping {color: #f00;}
+
+.theme-default #torus-sidebar {
+	background-color: #66f;
+	border-top: 1px solid #000;
+}
+.theme-default #torus-sidebar span.torus-user-away {color: #666;}
+.theme-default #torus-sidebar li.torus-sidebar-button {background-color: #99f;}
+.theme-default #torus-sidebar li.torus-sidebar-button:hover {background-color: #def;}
+.theme-default #torus-sidebar li.torus-sidebar-button-selected,
+.theme-default #torus-sidebar li.torus-sidebar-button-selected:hover {background-color: #fff;}
+
+.theme-default #torus-popup {
+	background-color: #66f;
+	border: 1px solid #000;
+}
+.theme-default #torus-popup-avatar {
+	border: 1px solid #ccc;
+}
+.theme-default #torus-popup-name,
+.theme-default #torus-popup-name a {
+	color: #000;
+}
+.theme-default #torus-popup a.torus-popup-userlink,
+.theme-default #torus-popup a.torus-popup-action,
+.theme-default #torus-popup a.torus-popup-action-disabled {
+	border-top-color: #ccc;
+	border-bottom-color: #ccc;
+	background-color: #99f;
+}
+.theme-default #torus-popup a.torus-popup-userlink:hover,
+.theme-default #torus-popup a.torus-popup-action:hover {
+	background-color: #def;
+}
+.theme-default #torus-popup a.torus-popup-userlink-disabled,
+.theme-default #torus-popup a.torus-popup-userlink-disabled:hover,
+.theme-default #torus-popup a.torus-popup-action-disabled,
+.theme-default #torus-popup a.torus-popup-action-disabled:hover {
+	background-color: #ddd;
+	color: #999;
+}
+.theme-default #torus-popup-modconfirm,
+.theme-default #torus-popup-banmodal {
+	background-color: #66f;
+	border: 1px solid #000;
+	border-right: 1px solid #666;
+	color: #000;
+}
+
+.theme-default #torus-input {
+	background-color: #66f;
+	border-top-color: #000;
+}
+.theme-default #torus-input-box {
+	background-color: #fff;
+	color: #000;
+}
+
+.theme-default #torus-menu-extensions a {
+	background-color: #99f;
+}
+.theme-default #torus-menu-extensions a:hover {
+	background-color: #def;
+}
+.theme-default #torus-window fieldset {border-color: #66f;}
+.theme-default #torus-window textarea,
+.theme-default #torus-window input[type="text"],
+.theme-default #torus-window input[type="number"] {
+	background-color: #fff;
+	color: #000;
+}
+.theme-default #torus-window div.torus-option-array {border-color: #66f;}
+.theme-default #torus-window div.torus-option-array ul {background-color: #def;}
+.theme-default #torus-window div.torus-option-array li {border-bottom-color: #000;}
+.theme-default #torus-window div.torus-option-array li:nth-child(even) {background-color: #fff;}
+.theme-default #torus-window div.torus-option-array li:nth-child(odd) {background-color: #9cf;}
+.theme-default #torus-window div.torus-option-array span.torus-option-array-remove {color: red;}
+.theme-default #torus-window div.torus-option-array input {border-top-color: #66f;}

@@ -1,0 +1,8 @@
+{
+    "core": [ "main", "io", "chat", "events", "ext", "util", "cache", "user", "aftermain" ],
+    "ui": [
+        "main", "i18n", "events", "activate", "render", "popup", "menu",
+        "pings", "chat_listeners", "dom_listeners", "parser", "constructors",
+        "util", "options"
+    ]
+}

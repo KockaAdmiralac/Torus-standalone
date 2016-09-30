@@ -1,0 +1,26 @@
+{
+    "options": {
+        "maxmessages": 200,
+        "showrejoins": false,
+    	"showemotes": false,
+    	"maxemotes": 25,
+    	"defaultrooms": [],
+    	"showcolors": true,
+    	"colorhue": 0,
+    	"colorsat": 0.7,
+    	"colorval": 0.6,
+    	"joinchatlinks": true,
+    	"linktarget": "_blank"
+    },
+    "theme": "default",
+    "pings": {
+        "#global": {
+            "enabled": true,
+            "alert": "Activity!",
+            "beep": true,
+            "sound": "ping.ogg",
+            "literal": [],
+            "regex": []
+        }
+    }
+}

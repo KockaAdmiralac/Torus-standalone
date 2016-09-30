@@ -1,0 +1,11 @@
+{
+    "i18n": true,
+    "data": true,
+    "version": {
+        "major": 0,
+        "minor": 1,
+        "patch": 0
+    },
+    "js": ["html", "actions", "listeners", "lexer", "ast", "parser", "eval", "aftermain"],
+    "css": ["main"]
+}

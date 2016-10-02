@@ -211,7 +211,7 @@ Torus.util.read_dir = (dir, cb, ecb) => {
 	if(typeof dir !== 'string') {
 		throw new Error('Parameter \'dir\' not passed or in invalid format (util.read_dir)');
 	}
-	Torus.fs.readdir(dir, (e, d) => {
+	Torus.fs.readdir(`${__dirname}/${dir}`, (e, d) => {
 		if(e) {
 			if(typeof ecb === 'function') {
 				ecb.call(Torus, e);
@@ -224,4 +224,18 @@ Torus.util.read_dir = (dir, cb, ecb) => {
 			}
 		}
 	});
+};
+
+/**
+ * Saves a JSON data file into the `data` directory
+ * @param {Object} data Data to save into the file
+ * @param {String} file Name of the file
+ * @todo Better error catching
+ */
+Torus.util.save_data = (data, file) => {
+	if(data) { // we do not want to save `null` or `undefined` to a file
+		Torus.fs.writeFile(`${__dirname}/data/${file}.json`, JSON.stringify(data));
+	} else {
+		console.warn(`Attempted to save empty data to ${file}.json.`);
+	}
 };

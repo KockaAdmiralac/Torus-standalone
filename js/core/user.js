@@ -24,7 +24,7 @@ Torus.user.init = function() {
 };
 
 Torus.user.save_data = function() {
-    Torus.fs.writeFile('data/userdata.json', JSON.stringify(this.data)); // TODO: Error catch
+    Torus.util.save_data(this.data, 'userdata');
 	var event = new Torus.classes.ExtEvent('save_data');
 	event.options = this.data;
 	Torus.call_listeners(event);

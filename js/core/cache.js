@@ -1,7 +1,5 @@
 Torus.cache.save = () => {
-	if(Torus.cache.data) {
-		Torus.fs.writeFile('data/cache.json', JSON.stringify(Torus.cache.data));
-	}
+	Torus.util.save_data(Torus.cache.data, 'cache');
 };
 
 Torus.cache.load = () => {

@@ -272,7 +272,7 @@ Torus.load_data = (data, cb) => {
 	}
 	let loading = data.length;
 	data.forEach((el) => {
-		const dir = `${__dirname}/${el[0]}`,
+		const dir = el[0],
 			  loadto = el[1];
 		Torus.util.read_dir(dir, (d) => {
 			d.forEach((file) => {
@@ -280,7 +280,7 @@ Torus.load_data = (data, cb) => {
 					const name = file.substring(0, file.length - 5);
 					Torus[loadto] = Torus[loadto] || {};
 					Torus[loadto][name] = Torus[loadto][name] || {};
-					Torus.util.softmerge(Torus[loadto][name], require(`${dir}/${file}`));
+					Torus.util.softmerge(Torus[loadto][name], require(`${__dirname}/${dir}/${file}`));
 		        }
 			});
 			if(--loading === 0) {

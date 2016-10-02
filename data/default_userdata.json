@@ -10,7 +10,8 @@
     	"colorsat": 0.7,
     	"colorval": 0.6,
     	"joinchatlinks": true,
-    	"linktarget": "_blank"
+    	"linktarget": "_blank",
+		"timezone": 0
     },
     "theme": "default",
     "pings": {

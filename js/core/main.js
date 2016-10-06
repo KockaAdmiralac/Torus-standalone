@@ -296,7 +296,7 @@ Torus.onload = () => {
 	Torus.load_ext('themes');
 	Torus.load_ext('commands');
 	if(Torus.debug) {
-		Torus.load_ext('cmd');
+		Torus.load_ext('logs');
 	}
 	Torus.call_listeners(new Torus.classes.WindowEvent('load'));
 	new Torus.classes.Chat(0);

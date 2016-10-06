@@ -1,0 +1,14 @@
+{
+    "logs-me": "* $1 $2",
+    "logs-message": " <$1> $2",
+    "logs-join": "== $1 joined",
+    "logs-rejoin": "== $1 rejoined",
+    "logs-ghost": "== $1 ghosted",
+    "logs-part": "== $1 parted",
+    "logs-logout": "== $1 logged out",
+    "logs-ctcp": " $1 $2 CTCP|$3|$4$5",
+    "logs-mod": "== $1 modded $2",
+    "logs-kick": "== $1 kicked $2",
+    "logs-ban": "== $1 banned $2 for $3",
+    "logs-unban": "== $1 unbanned $2"
+}

@@ -1,0 +1,24 @@
+
+[06-09-2016 14:14:43] == KockaAdmiralac joined
+[06-09-2016 14:14:45]  <KockaAdmiralac> test
+[06-09-2016 14:14:47] == AdorableDarling joined
+[06-09-2016 14:14:54]  <KockaAdmiralac> Hm
+[06-09-2016 14:16:30]  <KockaAdmiralac> Hm, never mind I was just testing an extension for Torus-standalone :P
+[06-09-2016 14:16:42]  <AdorableDarling> :P
+[06-09-2016 14:17:39]  <KockaAdmiralac> I'm making an extension for logging chats on my local disk lol
+[06-09-2016 14:18:36]  <AdorableDarling> Ooh. xD
+[06-09-2016 14:22:32] == KockaAdmiralac joined
+[06-09-2016 14:22:36] == AdorableDarling parted
+[06-09-2016 14:22:38] == AdorableDarling joined
+[06-09-2016 14:22:42]  <KockaAdmiralac> Yay I think it's finally working
+[06-09-2016 14:23:10] == AdorableDarling parted
+[06-09-2016 14:23:12] == AdorableDarling joined
+[06-09-2016 14:23:17]  <KockaAdmiralac> If you need logs of the chat, ask me ;)
+[06-09-2016 14:23:28]  <KockaAdmiralac> Jk I know you probably have access to CCChatBot's logs
+[06-09-2016 14:23:45]  <AdorableDarling> Haha, yeah, I do. c;
+[06-09-2016 14:24:21]  <KockaAdmiralac> But now I'm logging PMs as well >:)
+[06-09-2016 14:25:30]  <AdorableDarling> Ooh, private messages? :o I did not know it is possible to log them as well.
+[06-09-2016 14:25:47]  <KockaAdmiralac> Well I mean, not everybody's private messages
+[06-09-2016 14:25:56]  <KockaAdmiralac> Just ones I'm in
+[06-09-2016 14:26:10]  <AdorableDarling> Ah, right.
+[06-09-2016 14:26:52] == AdorableDarling parted

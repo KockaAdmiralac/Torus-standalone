@@ -1,4 +1,4 @@
 node_modules
 start.bat
 data/userdata.json
-logs
+logs/

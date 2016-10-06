@@ -19,7 +19,7 @@ window.Torus = {
 	version: {
 		major: 0,
 		minor: 1,
-		patch: 0
+		patch: 2
 	},
 	debug: false, 	// Set this to true if you wanna see some good stuff
 					// HINT: Look at the console ;)

@@ -214,7 +214,7 @@ Torus.io.transports.polling = function(domain, info) {
 			if(sock.host && sock.port && sock.wiki && sock.room && sock.key && !sock.xhr) {
 				sock.poll('init');
 			} // FIXME: long
-		});
+		}.bind(this));
 	}
 
 	if(!this.key) {
@@ -228,7 +228,7 @@ Torus.io.transports.polling = function(domain, info) {
 			if(sock.host && sock.port && sock.wiki && sock.room && sock.key && !sock.xhr) {
 				sock.poll('init');
 			} // FIXME: long
-		});
+		}.bind(this));
 	}
 	if(this.host && this.port && this.wiki && this.room && this.key) {
 		this.poll('init');
@@ -409,7 +409,9 @@ Torus.io.transports.polling.prototype.close = function(reason) {
 	});
 };
 Torus.io.transports.polling.prototype.retry = function() {
-	if(!this.open) {return;}
+	if(!this.open) {
+		return;
+	}
 
 	this.retries++;
 	if(this.retries > 5) {

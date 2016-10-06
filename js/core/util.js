@@ -39,16 +39,25 @@ Torus.util.hardmerge = (dest, source, prefix) => {
 	}
 };
 
-Torus.util.timestamp = (time, timezone) => {
+Torus.util.timestamp = (time, timezone, includedate) => {
 	timezone = timezone || 0;
 	var date = new Date();
 	if(time) {
 		date.setTime(time);
 	}
 	date.setUTCHours(date.getUTCHours() + timezone);
-	var hours = date.getUTCHours(),
+	let year = date.getFullYear(),
+		day = date.getDate(),
+		month = date.getMonth(),
+		hours = date.getUTCHours(),
 		minutes = date.getUTCMinutes(),
 		seconds = date.getUTCSeconds();
+	if(day < 10) {
+		day = '0' + day;
+	}
+	if(month < 10) {
+		month = '0' + month;
+	}
 	if(hours < 10) {
 		hours = '0' + hours;
 	}
@@ -58,7 +67,7 @@ Torus.util.timestamp = (time, timezone) => {
 	if(seconds < 10) {
 		seconds = '0' + seconds;
 	}
-	return hours + ':' + minutes + ':' + seconds;
+	return `${includedate ? `${day}-${month}-${year} ` : ''}${hours}:${minutes}:${seconds}`;
 };
 
 Torus.util.expiry_to_seconds = (expiry) => {
@@ -238,4 +247,26 @@ Torus.util.save_data = (data, file) => {
 	} else {
 		console.warn(`Attempted to save empty data to ${file}.json.`);
 	}
+};
+
+/**
+ * Creates a directory (tolerating if the directory already exists)
+ * @param {String} dir Directory to create
+ * @param {Function} cb Callback function
+ * @param {Function} ecb Error callback function
+ */
+Torus.util.mkdir = (dir, cb, ecb) => {
+	Torus.fs.mkdir(`${__dirname}/${dir}`, (e, d) => {
+		if(e && e.code !== 'EEXIST') {
+			if(typeof ecb === 'function') {
+				ecb.call(Torus, e);
+			} else {
+				throw e;
+			}
+		} else {
+			if(typeof cb === 'function') {
+				cb.call(Torus, d);
+			}
+		}
+	});
 };

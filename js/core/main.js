@@ -19,7 +19,7 @@ window.Torus = {
 	version: {
 		major: 0,
 		minor: 1,
-		patch: 0
+		patch: 2
 	},
 	debug: false, 	// Set this to true if you wanna see some good stuff
 					// HINT: Look at the console ;)
@@ -296,7 +296,7 @@ Torus.onload = () => {
 	Torus.load_ext('themes');
 	Torus.load_ext('commands');
 	if(Torus.debug) {
-		Torus.load_ext('cmd');
+		Torus.load_ext('logs');
 	}
 	Torus.call_listeners(new Torus.classes.WindowEvent('load'));
 	new Torus.classes.Chat(0);

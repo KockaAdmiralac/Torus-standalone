@@ -1,4 +1,5 @@
 node_modules
 start.bat
+hooks.json
 data/userdata.json
 logs/

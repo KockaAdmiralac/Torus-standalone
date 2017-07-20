@@ -1,49 +1,59 @@
-Torus.io.xhr = function(options) { // TODO: USE PROMISES FFS
-	var url = options.url,
-		params = options.data,
-		method = options.type || 'GET',
-		success = options.success,
-		error = options.error,
-		responseType = options.responseType || 'json',
-		contentType = options.contentType;
-	if(!url) {
-		throw new Error('URL must be specified (Torus.io.xhr)');
-	}
-	if(params) {
-		var first = true;
-		for(var i in params) {
-			if(params.hasOwnProperty(i)) {
-				url += `${first ? '?' : '&'}${encodeURIComponent(i)}=${encodeURIComponent(params[i])}`;
-				first = false;
+/**
+ * io.js
+ *
+ * I/O functions for communicating with various APIs
+ * Some of the methods are in Torus.user
+ */
+class IO {
+	static xhr(options) {
+		return new Promise(function(resolve, reject) {
+			let url = options.url;
+			const params = options.data,
+				  method = options.type || 'GET',
+				  responseType = options.responseType || 'json',
+				  contentType = options.contentType;
+			if(!url) {
+				throw new Error('URL must be specified (Torus.io.xhr)');
 			}
-		}
-		url += '&t=';
-	} else {
-		url += '?t=';
-	}
-	url += Math.random() * 100000000000000000;
-	if(url[0] === '/') {
-		url = `http://community.wikia.com${url}`;
-	}
-	var xhr = new XMLHttpRequest();
-	xhr.addEventListener('loadend', function() {
-		if(this.status === 200) {
-			if(typeof success === 'function') {
-				success.call(Torus, this.response);
+			if(params) {
+				var first = true;
+				for(var i in params) {
+					if(params.hasOwnProperty(i)) {
+						url += `${first ? '?' : '&'}${encodeURIComponent(i)}=${encodeURIComponent(params[i])}`;
+						first = false;
+					}
+				}
+				url += '&t=';
+			} else {
+				url += '?t=';
 			}
-		} else if(typeof error === 'function') {
-			error.call(Torus, this.status);
-		}
-	});
-	xhr.open(method, url, true);
-	xhr.responseType = responseType;
-	xhr.setRequestHeader('Cache-Control', 'no-cache');
-	if(contentType) {
-		xhr.setRequestHeader('Content-Type', contentType);
+			url += Math.random() * 100000000000000000;
+			if(url[0] === '/') {
+				url = `http://community.wikia.com${url}`;
+			}
+			var xhr = new XMLHttpRequest();
+			xhr.addEventListener('loadend', function() {
+				if(this.status === 200) {
+					if(typeof success === 'function') {
+						success.call(Torus, this.response);
+					}
+				} else if(typeof error === 'function') {
+					error.call(Torus, this.status);
+				}
+			});
+			xhr.open(method, url, true);
+			xhr.responseType = responseType;
+			xhr.setRequestHeader('Cache-Control', 'no-cache');
+			if(contentType) {
+				xhr.setRequestHeader('Content-Type', contentType);
+			}
+			xhr.setRequestHeader('Api-Client', `Torus-standalone/${Torus.get_version()}`);
+			xhr.send();
+		});
 	}
-	xhr.setRequestHeader('Api-Client', `Torus-standalone/${Torus.get_version()}`);
-	xhr.send();
-};
+}
+
+module.exports = IO;
 
 Torus.io.ajax = function(method, post, callback) {
 	Torus.io.xhr({
@@ -155,7 +165,7 @@ Torus.io.key = function(success, error) {
 };
 
 Torus.io.spider = function(domain, success, error) {
-	if(Torus.cache.data[domain]) {
+	if(Torus.cache.data.data[domain]) {
 		if(typeof success === 'function') {
 			success.call(Torus, Torus.cache.data[domain]);
 		}
@@ -176,6 +186,11 @@ Torus.io.spider = function(domain, success, error) {
 		responseType: 'json'
 	});
 };
+
+/**
+ * Transports used in communicating with the chat server
+ */
+Torus.io.transports = {};
 
 Torus.io.transports.polling = function(domain, info) {
 	if(!(this instanceof Torus.io.transports.polling)) {
@@ -344,7 +359,7 @@ Torus.io.transports.polling.prototype.poll = function(from) { //jshint ignore:li
 			sock.retry();
 		}
 	});
-	this.xhr.addEventListener('error', Torus.util.debug);
+	this.xhr.addEventListener('error', console.log);
 	this.xhr.open('GET', this.url, true);
 	//this.xhr.setRequestHeader('Api-Client', 'Torus/' + Torus.version);
 	this.xhr.send();

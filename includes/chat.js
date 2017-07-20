@@ -8,7 +8,6 @@ Torus.classes.Chat = function(domain, parent, users) {
 	if(Torus.chats[domain]) {
 		throw new Error('Torus.classes.Chat: Tried to create room `' + name + '` but it already exists.');
 	}
-
 	this.domain = domain;
 	Torus.chats[domain] = this;
 	if(domain) { //this is a normal room

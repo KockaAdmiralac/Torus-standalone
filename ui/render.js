@@ -88,7 +88,7 @@ Torus.ui.render_line = function(message) {
 	children.push({
 		type: 'span',
 		class: 'message-timestamp',
-		text: '[' + Torus.util.timestamp(message.time, Torus.user.data.options.ui_timezone) + ']'
+		text: '[' + Torus.util.timestamp(message.time, Torus.user.data.options.timezone) + ']'
 	});
 	if(viewing > 0) {
 		var max = message.room.name.length;

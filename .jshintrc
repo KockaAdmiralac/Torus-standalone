@@ -3,7 +3,9 @@
       "process"  : false,
       "Torus"    : false,
       "require"  : false,
-      "__dirname": false
+      "global"   : false,
+      "__dirname": false,
+      "module"   : false
   },
   "browser"     : true,
   "devel"       : true,

@@ -1,3 +1,11 @@
+// HACK: Blocks users from pinging you
+Torus.getthefuckoutofmychat = [
+];
+
+// HACK: Pings you thrice wherever these users do something
+Torus.holyshit = [
+];
+
 Torus.ui.render = function(el) {
 	if(!el) {
 		el = Torus.ui.ids.window;
@@ -129,7 +137,10 @@ Torus.ui.render_line = function(message) {
 				[ whitespace, '<', Torus.ui.span_user(message.user), '> ' ] :
 				[ '*', whitespace, Torus.ui.span_user(message.user), ' ' ]
 			);
-			html = message.html;
+			let blocked = document.createElement('span');
+			blocked.style.color = '#CCCCCC';
+			blocked.innerHTML = 'Message blocked';
+			html = (Torus.getthefuckoutofmychat.includes(message.user)) ? blocked : message.html;
 			break;
 		case 'alert':
 			children.push('== ');
@@ -139,6 +150,13 @@ Torus.ui.render_line = function(message) {
 		case 'rejoin':
 		case 'ghost':
 		case 'part':
+			if(Torus.holyshit.includes(message.user)) {
+				var audio = new Audio('audio/ping.ogg');
+				audio.play();
+				audio.play();
+				audio.play();
+				new Notification('HOLY SHIT');
+			}
 			children.push('== ');
 			html = Torus.i18n.html(`message-${message.event}`, Torus.util.create_element(Torus.ui.span_user(message.user)), document.createTextNode(`{${message.room.name}}`));
 			break;

@@ -1,10 +1,28 @@
+/**
+ * util.js
+ *
+ * Module for various utility functions used across Torus
+ */
 Torus.util = {};
 
+/**
+ * Method for logging all arguments passed to the console, as an array
+ * @param {Array} args Arguments to log
+ */
 Torus.util.debug = (...args) => {
 	console.log(args);
 };
+
+/**
+ * Does nothing
+ */
 Torus.util.null = () => {};
 
+/**
+ * Compares two strings
+ * @param {String} str1 First string
+ * @param {String} str2 Second string
+ */
 Torus.util.compare_strings = (str1, str2) => {
 	for(var i = 0; i < str1.length && i < str2.length; i++) {
 		if(str1.charAt(i) === str2.charAt(i)) {
@@ -16,6 +34,10 @@ Torus.util.compare_strings = (str1, str2) => {
 	return str1.length - str2.length;
 };
 
+/**
+ * Capitalize the first letter in a string
+ * @param {String} str String to capitalize
+ */
 Torus.util.cap = (str) => {
 	return str.charAt(0).toUpperCase() + str.substring(1);
 };
@@ -183,6 +205,25 @@ Torus.util.load_css = (url) => {
 };
 
 /**
+ * Returns a formatted URL string
+ * @param {String} base Base URL to add on to
+ * @param {Object} params URL parameters
+ * @param {Boolean} first If to use & instead of ? as the first parameter separator
+ */
+Torus.util.format_url = (base, params, first) => {
+	if(params && typeof params === 'object') {
+		var first = !first;
+		for(var i in params) {
+			if(params.hasOwnProperty(i)) {
+				base += `${first ? '?' : '&'}${i}=${encodeURIComponent(params[i])}`;
+				first = false;
+			}
+		}
+	}
+	return base;
+};
+
+/**
  * Returns a link to a page on a specified wiki
  * @param {String} wiki The wiki subdomain to link to
  * @param {String} page [optional] The page to link to
@@ -193,20 +234,7 @@ Torus.util.wikilink = (wiki, page, params) => {
 	if(!wiki) {
 		throw new Error('Parameter \'wiki\' is required. (util.wikilink)');
 	}
-	var uri = 'http://' + wiki + '.wikia.com/wiki/';
-	if(page) {
-		uri += encodeURIComponent(page);
-	}
-	if(params && typeof params === 'object') {
-		var first = true;
-		for(var i in params) {
-			if(params.hasOwnProperty(i)) {
-				uri += (first ? '?' : '&') + i + '=' + encodeURIComponent(params[i]);
-				first = false;
-			}
-		}
-	}
-	return uri;
+	return Torus.util.format_url(`http://${wiki}.wikia.com/wiki/${page ? encodeURIComponent(page) : ''}`, params);
 };
 
 /**

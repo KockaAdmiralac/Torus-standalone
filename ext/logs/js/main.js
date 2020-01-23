@@ -39,7 +39,9 @@ Torus.ext.logs.log_message = (message) => {
         filename;
     if(message.room.parent) {
         // TODO: What if we change "PM: " to something else?
-        let name = message.room.name.substring(4);
+        let name = typeof message.room.name === 'string' ?
+            message.room.name.substring(4) :
+            String(message.room.name);
         // Escaping username characters
         // TODO: Some better replacement???
         name
@@ -52,7 +54,7 @@ Torus.ext.logs.log_message = (message) => {
         filename = message.room.name;
     }
     // TODO: Don't just replace newlines with spaces, jeez
-    Torus.fs.appendFile(`${__dirname}/logs/${filename}.txt`, `\n[${ts}] ${msg.replace(/\n/g, ' ')}`);
+    Torus.fs.appendFile(`${__dirname}/logs/${filename}.txt`, `\n[${ts}] ${msg.replace(/\n/g, ' ')}`, () => {});
 };
 
 /**

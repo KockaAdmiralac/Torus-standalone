@@ -21,82 +21,15 @@ window.Torus = {
 		minor: 1,
 		patch: 2
 	},
-	debug: false, 	// Set this to true if you wanna see some good stuff
-					// HINT: Look at the console ;)
+	debug: true, // Set this to true if you wanna see some good stuff
 	chats: {},
 	user: {},
 	fs: require('fs'),
 	shell: require('electron').shell,
 	files: {},
 	cache: {},
-	loading: {},
-	listeners: { // TODO: Remove this because listeners now get added automatically?
-		window: {
-			load: [],
-			unload: [],
-		},
-		chat: {
-			'new': [],
-
-			open: [],
-			connected: [],
-			close: [],
-			reopen: [],
-
-			update_user: [],
-			remove_user: [],
-
-			initial: [],
-			send_message: [],
-			send_me: [],
-			setstatus: [],
-			logout: [],
-			givechatmod: [],
-			kick: [],
-			ban: [],
-			unban: [], // FIXME: never called
-			openprivate: [],
-		},
-		io: {
-			initial: [],
-			message: [],
-			alert: [],
-			me: [],
-			join: [],
-			rejoin: [],
-			part: [],
-			ghost: [],
-			logout: [],
-			update_user: [],
-			ctcp: [],
-			mod: [],
-			kick: [],
-			ban: [],
-			unban: [],
-			open_private: [],
-			force_reconnect: [],
-			force_disconnect: []
-		},
-		ui: {
-			render: [],
-			activate: [],
-			deactivate: [],
-			show: [],
-			unshow: [],
-			render_popup: [],
-			unrender_popup: [],
-			ping: []
-		},
-		ext: {
-			'new': []
-		}
-	},
-	io: {
-		transports: {},
-		jsonp_callbacks: [],
-	},
+	listeners: {},
 	classes: {},
-	util: {},
 	data: {
 		domains: {},
 		ids: {},
@@ -134,11 +67,15 @@ Torus.add_listener = function(type, event, func) {
  * Fires immediately if window is loaded
  * @param {Function} func Callback
  */
-Torus.add_onload_listener = (func) => {
+Torus.add_onload_listener = function(func) {
 	if(document.readyState === 'complete') {
 		func.call(Torus);
 	} else {
-		this.add_listener('window', 'load', func);
+        if(typeof this.add_listener === 'function') {
+            this.add_listener('window', 'load', func);
+        } else {
+            Torus.add_listener('window', 'load', func);
+        }
 	}
 };
 
@@ -169,10 +106,8 @@ Torus.remove_listener = function(type, event, func) {
  * @return {Boolean} If type is valid
  */
 Torus.call_listeners = function(event) {
-	if(!event.type || !event.event) {
+	if(!event || !event.type || !event.event) {
 		throw new Error(`Event has no 'type' or 'event' property: ${JSON.stringify(event)}`);
-	} else if(!this.listeners[event.type]) {
-		throw new Error(`Event type '${event.type}' doesn't exist`);
 	}
 
 	if(this.listeners[event.type] && this.listeners[event.type][event.event]) {
@@ -298,7 +233,6 @@ Torus.onload = () => {
 	if(Torus.debug) {
 		Torus.load_ext('logs');
 	}
-	Torus.call_listeners(new Torus.classes.WindowEvent('load'));
 	new Torus.classes.Chat(0);
 	Torus.ui.onload();
 };
@@ -314,3 +248,6 @@ Torus.unload = () => {
 };
 
 window.addEventListener('beforeunload', Torus.unload);
+window.addEventListener('load', function() {
+    Torus.call_listeners(new Torus.classes.WindowEvent('load'));
+});

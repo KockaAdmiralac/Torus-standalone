@@ -1,3 +1,11 @@
+/**
+ * io.js
+ *
+ * I/O functions for communicating with various APIs
+ * Some of the methods are in Torus.user
+ */
+Torus.io = {};
+
 Torus.io.xhr = function(options) { // TODO: USE PROMISES FFS
 	var url = options.url,
 		params = options.data,
@@ -140,9 +148,9 @@ Torus.io.unblock = function(user, callback) {
 	});
 };
 
-Torus.io.key = function(success, error) {
+Torus.io.key = function(wiki, success, error) {
 	Torus.io.xhr({
-		url: '/wikia.php',
+		url: `http://${wiki}.wikia.com/wikia.php`,
 		type: 'GET',
 		data: {
 			controller: 'Chat',
@@ -154,28 +162,17 @@ Torus.io.key = function(success, error) {
 	});
 };
 
-Torus.io.spider = function(domain, success, error) {
-	if(Torus.cache.data[domain]) {
-		if(typeof success === 'function') {
-			success.call(Torus, Torus.cache.data[domain]);
-		}
-		return;
-	}
-	Torus.io.xhr({
-		url: 'http://cis-linux2.temple.edu/~tuf23151/torus.php',
-		data: { domain: domain },
-		success: (d) => {
-			if(!d.error) {
-				Torus.cache.update(domain, d);
-			}
-			if(typeof success === 'function') {
-				success.call(Torus, d);
-			}
-		},
-		error: error,
-		responseType: 'json'
-	});
+Torus.io.id = function(wiki, success, error) {
+    Torus.io.api('GET', 'query', {
+        meta: 'siteinfo',
+        siprop: 'wikidesc'
+    }, success, error, wiki);
 };
+
+/**
+ * Transports used in communicating with the chat server
+ */
+Torus.io.transports = {};
 
 Torus.io.transports.polling = function(domain, info) {
 	if(!(this instanceof Torus.io.transports.polling)) {
@@ -197,46 +194,45 @@ Torus.io.transports.polling = function(domain, info) {
 	this.retries = 0;
 	this.listeners = { io: {} };
 
-	if(!this.host || !this.port || !this.wiki || !this.room) {
-		var sock = this;
-		Torus.io.spider(this.domain, function(d) {
-			if(d.error === 'nochat') {
-				this.close('nochat');
-				return;
-			} else if(d.error) {
-				this.close('cors-error');
-				throw new Error('transport: CORS proxy returned error `' + d.error + '`');
-			}
-			sock.host = sock.host || d.host;
-			sock.port = sock.port || d.port;
-			sock.wiki = sock.wiki || d.wiki;
-			sock.room = sock.room || d.room;
-			if(sock.host && sock.port && sock.wiki && sock.room && sock.key && !sock.xhr) {
-				sock.poll('init');
-			} // FIXME: long
-		}.bind(this));
+	if(!this.host || !this.port || !this.room || !this.key) {
+		Torus.io.key(this.domain, function(d) {
+            if(!d) {
+                this.close('nochat');
+                return;
+            }
+			this.host = d.chatServerHost;
+			this.port = d.chatServerPort;
+			this.room = d.roomId;
+            this.key = d.chatkey;
+			this.check();
+		}.bind(this), function(e) {
+            this.close('nochat');
+        }.bind(this));
 	}
 
-	if(!this.key) {
-		var sock = this; // FIXME: closure
-		Torus.io.key(function(d) {
-			if(!d.chatkey) {
-				this.close('loggedout');
+	if(!this.wiki) {
+		Torus.io.id(this.domain, function(d) {
+			if(!d.query) {
+				this.close('nochat');
 				return;
 			}
-			sock.key = d.chatkey;
-			if(sock.host && sock.port && sock.wiki && sock.room && sock.key && !sock.xhr) {
-				sock.poll('init');
-			} // FIXME: long
-		}.bind(this));
+			this.wiki = d.query.wikidesc.id;
+			this.check();
+		}.bind(this), function(e) {
+            this.close('nochat');
+        }.bind(this));
 	}
-	if(this.host && this.port && this.wiki && this.room && this.key) {
+	this.check();
+};
+
+Torus.io.transports.polling.prototype.check = function() {
+    if(this.host && this.port && this.wiki && this.room && this.key) {
 		this.poll('init');
-	} // FIXME: long
+	}
 };
 
 Torus.io.transports.polling.prototype.poll = function(from) { //jshint ignore:line
-	this.url = 'http://' + this.host + ':' + this.port + '/socket.io/?EIO=2&transport=polling&name=' + encodeURIComponent(Torus.user.name) + '&key=' + this.key + '&roomId=' + this.room + '&serverId=' + this.wiki + '&wikiId=' + this.wiki;
+	this.url = 'https://' + this.host + ':' + this.port + '/socket.io/?EIO=2&transport=polling&name=' + encodeURIComponent(Torus.user.name) + '&key=' + this.key + '&roomId=' + this.room + '&serverId=' + this.wiki;
 	if(this.session) {
 		this.url += '&sid=' + this.session;
 	}
@@ -251,26 +247,15 @@ Torus.io.transports.polling.prototype.poll = function(from) { //jshint ignore:li
 			return;
 		} else if(this.status === 200) {
 			sock.retries = 0;
-
-			// As far as I know all messages begin with a null byte (to tell socket.io that they are strings)
-			// after this is the length, encoded in the single most ridiculously stupid format ever created
-			// the decimal representation of the length is encoded in binary, terminated by \ufffd: for example,
-			// if the message length is 30 bytes, then the length is encoded as \x03\x00\ufffd
-			// yes that's right, rather than use the actual number, they decided to take the same amount of space
-			// to write the number in a format that provides no advantages and is literally always harder to parse
-			// following the asinine length is the number 4 (which means message)
-			// following that is the message type, and then immediately thereafter is the actual message content
-			// I swear to god socket.io must have been high when they designed this
-
 			var data = this.responseText,
 				pinginterval = () => {
 					sock.ping();
 				};
 			while(data.length > 0) {
-				var ufffd = data.indexOf('\ufffd'),
-					end = 1 + ufffd + Torus.util.stupid_to_int(data.substring(1, ufffd)),
-					text = data.substring(1 + ufffd, end),
-					packet_type = text.charAt(0) * 1;
+				var colon = data.indexOf(':'),
+					end = colon + 1 + Number(data.substring(0, colon)),
+					text = data.substring(1 + colon, end),
+					packet_type = Number(text.charAt(0));
 				data = data.substring(end);
 				text = text.substring(1);
 
@@ -350,7 +335,7 @@ Torus.io.transports.polling.prototype.poll = function(from) { //jshint ignore:li
 	this.xhr.send();
 };
 Torus.io.transports.polling.prototype.send = function(message) {
-	var data = `42["message",${Torus.util.utf8ify(JSON.stringify(message))}]`,
+	var data = `42["message",${JSON.stringify(message)}]`,
 		xhr = new XMLHttpRequest(); // FIXME: put these somewhere
 	xhr.sock = this;
 	xhr.addEventListener('loadend', function() {
@@ -363,7 +348,7 @@ Torus.io.transports.polling.prototype.send = function(message) {
 	xhr.open('POST', this.url, true);
 	xhr.setRequestHeader('Content-Type', 'text/plain;charset=utf-8');
 	//xhr.setRequestHeader('Api-Client', 'Torus/' + Torus.version);
-	xhr.send('' + data.length + ':' + data);
+	xhr.send(data.length + ':' + data);
 };
 Torus.io.transports.polling.prototype.ping = function() {
 	this.ping_xhr = new XMLHttpRequest();

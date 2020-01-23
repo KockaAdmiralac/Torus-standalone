@@ -8,7 +8,6 @@ Torus.classes.Chat = function(domain, parent, users) {
 	if(Torus.chats[domain]) {
 		throw new Error('Torus.classes.Chat: Tried to create room `' + name + '` but it already exists.');
 	}
-
 	this.domain = domain;
 	Torus.chats[domain] = this;
 	if(domain) { //this is a normal room
@@ -63,9 +62,14 @@ Torus.classes.Chat.socket_connect = function(event) {
 };
 
 Torus.classes.Chat.socket_message = function(event) {
-	var data = event.message.data ? JSON.parse(event.message.data) : {},
-		e = event.sock.chat['event_' + event.message.event](data);
-	Torus.call_listeners(e);
+	var data = event.message.data || {};
+	if(typeof data === 'string') {
+		data = JSON.parse(data);
+	}
+	var e = event.sock.chat['event_' + event.message.event](data);
+    if (e) {
+    	Torus.call_listeners(e);
+    }
 };
 
 Torus.classes.Chat.prototype.connect = function(transport) {
@@ -193,14 +197,6 @@ Torus.classes.Chat.prototype.ctcp = function(target, proto, data) {
 };
 
 /**
- * Gives moderator permissions to a user
- * @param {String} user User to promote
- */
-Torus.classes.Chat.prototype.mod = function(user) {
-	this.send_command('givechatmod', { userToPromote: user });
-};
-
-/**
  * Kicks a user out of chat
  * @param {String} user User to kick
  */
@@ -303,11 +299,6 @@ Torus.classes.Chat.prototype['event_chat:add'] = function(data) {
 		event.time = data.attrs.timeStamp;
 	} else if(data.attrs.wfMsg) {
 		switch(data.attrs.wfMsg) {
-			case 'chat-inlinealert-a-made-b-chatmod':
-				event.event = 'mod';
-				event.performer = data.attrs.msgParams[0];
-				event.target = data.attrs.msgParams[1];
-				break;
 			case 'chat-err-connected-from-another-browser':
 				event.event = 'error';
 				event.error = 'error-otherbrowser';
@@ -359,10 +350,7 @@ Torus.classes.Chat.prototype.event_updateUser = function(data) {
 		status_message: data.attrs.statusMessage,
 		edits: data.attrs.editCount,
 	};
-	event.data.edits = event.data.edits.replace(/,/g, '');
-	event.data.edits *= 1;
-
-	if(event.data.status_state.indexOf('CTCP|') === 0) {
+	if(typeof event.data.status_state === 'string' && event.data.status_state.indexOf('CTCP|') === 0) {
 		var split = event.data.status_state.split('|'),
 			target = split[1].trim(),
 			proto = split[2].trim().toLowerCase();
@@ -454,11 +442,14 @@ Torus.classes.Chat.prototype.event_openPrivateRoom = function(data) {
 	var event = new Torus.classes.IOEvent('open_private', this),
 		blocked = false;
 	for(var i = 0; i < data.attrs.users.length; ++i) {
-		if(Torus.data.blocked.includes(data.attrs.users[i])) {
+		if(Torus.data.blocked.includes(data.attrs.users[i]) || Torus.getthefuckoutofmychat.includes(data.attrs.users[i])) {
 			blocked = true;
 			break;
 		}
 	}
+    if (blocked) {
+        return;
+    }
 	event.private = blocked ? false : Torus.open(data.attrs.roomId * 1, this, data.attrs.users);
 	event.users = data.attrs.users;
 	return event;
@@ -494,6 +485,13 @@ Torus.classes.Chat.prototype.event_longMessage = function() {
 	var event = new Torus.classes.IOEvent('error', this);
 	event.error = 'error-longmessage';
 	event.args = [];
+	return event;
+};
+
+Torus.classes.Chat.prototype.event_meta = function(data) {
+	var event = new Torus.classes.IOEvent('meta', this);
+	event.hostname = data.serverHostname;
+	event.version = data.serverVersion;
 	return event;
 };
 

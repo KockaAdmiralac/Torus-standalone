@@ -189,7 +189,7 @@ Torus.ui.update_user = (event) => {
 		class: 'torus-user-name',
 		text: event.user
 	});
-	if(props.status_state.toLowerCase() === 'away') {
+	if(typeof props.status_state === 'string' && props.status_state.toLowerCase() === 'away') {
 		span.classList.add('torus-user-away');
 	}
 	li.appendChild(span);

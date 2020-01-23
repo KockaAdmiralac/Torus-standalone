@@ -114,8 +114,8 @@
 .theme-$name #torus-popup a.torus-popup-userlink-disabled:hover,
 .theme-$name #torus-popup a.torus-popup-action-disabled,
 .theme-$name #torus-popup a.torus-popup-action-disabled:hover {
-	background-color: #ddd;
-	color: #999;
+    background-color: $bg2;
+    opacity: 0.5;
 }
 .theme-$name #torus-popup-modconfirm,
 .theme-$name #torus-popup-banmodal {
@@ -148,3 +148,7 @@
 	background-color: $bg5;
 	color: $text1;
 }
+
+.theme-$name #torus-window hr.torus-message-separator {border-color: $other;}
+.theme-$name ::-webkit-scrollbar { background-color: $bg3; }
+.theme-$name ::-webkit-scrollbar-thumb { background-color: $other; }

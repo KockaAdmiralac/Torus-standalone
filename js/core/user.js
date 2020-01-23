@@ -90,3 +90,10 @@ Torus.user.fetch_token = function(cb, ecb) {
         }
     }, ecb);
 };
+
+/**
+ * Method for logging the user out
+ */
+Torus.user.logout = function() {
+    Torus.io.api('POST', 'logout');
+};

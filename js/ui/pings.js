@@ -1,8 +1,8 @@
 Torus.ui.ping = function(event) {
-	var room = event.room;
-	if(!Torus.user.data.pings['#global'].enabled || !Torus.ui.window.parentNode) {
+	if(Torus.getthefuckoutofmychat.includes(event.user) || !Torus.user.data.pings['#global'].enabled || !Torus.ui.window.parentNode) {
 		return;
 	}
+	var room = event.room;
 	if((room !== Torus.ui.active && !room.viewing) || Torus.ui.active.id <= 0) {
 		Torus.ui.ids['tab-' + room.domain].classList.add('torus-tab-ping');
 	}

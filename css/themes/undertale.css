@@ -1,0 +1,154 @@
+/*
+ * template.css
+ *
+ * This file represents a template for all other themes
+ *
+ * Use your favorite find/replace tool to fill in colors. See
+ * comments on the following block for which colors go to what.
+ * Miscellaneous colors are marked with #2F2F2F. Find these, read the
+ * comment on it to figure out what it goes to, and then put whatever
+ * you want there. Don't try to just replace all of them; it'll look
+ * weird. Feel free to manually tweak stuff, you don't have to follow
+ * all the suggestions here.
+ *
+ * If you want to go beyond a recolor and do more interesting things,
+ * feel free, but make sure you prefix all of your selectors with
+ * `.theme-custom`, and keep the large brick after this comment
+ * (it sets colors for your preview on the theme selector and also
+ * the colors that extensions will use). You can do as much or as
+ * little as you want as long as it looks good.
+ *
+ * Replace custom with a UNIQUE IDENTIFIER for torus to use for your
+ * theme. Please use all lowercase letters; if you want spaces, use
+ * underscores.
+ */
+
+#torus-preview-custom .bg1, .theme-custom .bg1 {background-color: #5F2C60;} /* dark UI backgrounds (sidebar, tabs, input) */
+#torus-preview-custom .bg2, .theme-custom .bg2 {background-color: #5F2C60;} /* most buttons (tabs, menu buttons, sidebar buttons) */
+#torus-preview-custom .bg3, .theme-custom .bg3 {background-color: #383838;} /* chat window */
+#torus-preview-custom .bg4, .theme-custom .bg4 {background-color: #A44CA6;} /* button hover */
+#torus-preview-custom .bg5, .theme-custom .bg5 {background-color: #383838;} /* button selected */
+#torus-preview-custom .border1, .theme-custom .border1 {border-color: #333333;} /* UI borders */
+#torus-preview-custom .border2, .theme-custom .border2 {border-color: #333333;} /* minor details */
+#torus-preview-custom .border3, .theme-custom .border3 {border-color: #333333;} /* button borders */
+#torus-preview-custom .text1, .theme-custom .text1 {color: #D5D4D4;} /* most text */
+#torus-preview-custom .text2, .theme-custom .text2 {color: #B962B9;} /* links */
+#torus-preview-custom .text3, .theme-custom .text3 {color: #808080;} /* greyed out */
+#torus-preview-custom .text4, .theme-custom .text4 {color: #DF2316;} /* pings */
+
+.theme-custom {
+	color: #D5D4D4;
+	border: 1px solid #333333;
+}
+.theme-custom a {color: #B962B9;}
+.theme-custom a:visited {color: #2F2F2F;} /* visited link */
+
+.theme-custom #torus-tabs {
+	background-color: #5F2C60;
+}
+.theme-custom #torus-tabs span.torus-tab {
+	background-color: #5F2C60;
+	border: 1px solid #333333;
+}
+.theme-custom #torus-tabs span.torus-tab-viewing,
+.theme-custom #torus-tabs span.torus-tab:hover {
+	background-color: #A44CA6;
+}
+.theme-custom #torus-tabs span.torus-tab-active,
+.theme-custom #torus-tabs span.torus-tab-active:hover {
+	background-color: #383838;
+}
+.theme-custom #torus-tabs span.torus-tab-alert {color: #2F2F2F;} /* color for tabs with new joins/parts/kicks/etc */
+.theme-custom #torus-tabs span.torus-tab-message {color: #2F2F2F;} /* color for tabs with new messages */
+.theme-custom #torus-tabs span.torus-tab-ping {color: #DF2316;}
+.theme-custom #torus-tabs span.torus-tab-close {color: #D5D4D4;}
+.theme-custom #torus-tabs span.torus-tab-close:hover {color: #DF2316;}
+
+.theme-custom #torus-info {
+	background-color: #2F2F2F; /* bg for the info bar */
+	border-top: 1px solid #333333;
+	border-right: 1px solid #333333;
+}
+
+.theme-custom #torus-window {
+	background-color: #383838;
+	border-top: 1px solid #333333;
+	border-right: 1px solid #333333;
+}
+.theme-custom #torus-window div.torus-message-inactive {color: #808080;}
+.theme-custom #torus-window div.torus-message-ping {color: #DF2316;}
+
+.theme-custom #torus-sidebar {
+	background-color: #5F2C60;
+	border-top: 1px solid #333333;
+}
+.theme-custom #torus-sidebar span.torus-user-away {color: #808080;}
+.theme-custom #torus-sidebar li.torus-sidebar-button {background-color: #5F2C60;}
+.theme-custom #torus-sidebar li.torus-sidebar-button:hover {background-color: #A44CA6;}
+.theme-custom #torus-sidebar li.torus-sidebar-button-selected,
+.theme-custom #torus-sidebar li.torus-sidebar-button-selected:hover {background-color: #383838;}
+
+.theme-custom #torus-popup {
+	background-color: #5F2C60;
+	border: 1px solid #333333;
+}
+.theme-custom #torus-popup-avatar {
+	border: 1px solid #333333;
+}
+.theme-custom #torus-popup-name,
+.theme-custom #torus-popup-name a {
+	color: #D5D4D4;
+}
+.theme-custom #torus-popup a.torus-popup-userlink,
+.theme-custom #torus-popup a.torus-popup-action,
+.theme-custom #torus-popup a.torus-popup-action-disabled {
+	border-top-color: #333333;
+	border-bottom-color: #333333;
+	background-color: #5F2C60;
+}
+.theme-custom #torus-popup a.torus-popup-userlink:hover,
+.theme-custom #torus-popup a.torus-popup-action:hover {
+	background-color: #A44CA6;
+}
+.theme-custom #torus-popup a.torus-popup-userlink-disabled,
+.theme-custom #torus-popup a.torus-popup-userlink-disabled:hover,
+.theme-custom #torus-popup a.torus-popup-action-disabled,
+.theme-custom #torus-popup a.torus-popup-action-disabled:hover {
+    background-color: #5F2C60;
+    opacity: 0.5;
+}
+.theme-custom #torus-popup-modconfirm,
+.theme-custom #torus-popup-banmodal {
+	background-color: #5F2C60;
+	border: 1px solid #333333;
+	border-right: 1px solid #333333;
+	color: #D5D4D4;
+}
+
+.theme-custom #torus-input {
+	background-color: #5F2C60;
+	border-top: 1px solid #333333;
+}
+.theme-custom #torus-input-box {
+	background-color: #383838;
+	color: #D5D4D4;
+}
+
+.theme-custom #torus-menu-extensions a {
+	background-color: #5F2C60;
+}
+.theme-custom #torus-menu-extensions a:hover {
+	background-color: #A44CA6;
+}
+
+.theme-custom #torus-window fieldset {border: 1px solid #B962B9;}
+.theme-custom #torus-window textarea,
+.theme-custom #torus-window input[type="text"],
+.theme-custom #torus-window input[type="number"] {
+	background-color: #383838;
+	color: #D5D4D4;
+}
+
+.theme-custom #torus-window hr.torus-message-separator {border-color: #2F2F2F;}
+.theme-custom ::-webkit-scrollbar { background-color: #383838; }
+.theme-custom ::-webkit-scrollbar-thumb { background-color: #2F2F2F; }
